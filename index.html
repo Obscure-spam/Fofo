@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Fofa do Dia</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px #ffd1dc;
+        }
+
+        #mensagem {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: 2px dashed #ff99cc;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            transition: transform 0.3s ease;
+        }
+
+        #mensagem:hover {
+            transform: scale(1.05);
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d94;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .heart:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 2s; }
+        .heart:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 0.5s; }
+    </style>
+</head>
+<body onload="mostrarMensagem()">
+    <div class="container">
+        <h1>Uma Mensagem Fofa pra Você! 🐾</h1>
+        <div id="mensagem"></div>
+        <div class="heart">💖</div>
+        <div class="heart">✨</div>
+        <div class="heart">🌸</div>
+        <div class="heart">🐾</div>
+    </div>
+
+    <script>
+        const mensagens = [
+            "Você é uma estrelinha brilhando no céu da vida! ✨",
+            "Hoje é um dia perfeito pra sorrir e espalhar amor! 😊💕",
+            "Você é mais forte do que imagina, continue brilhando! 🌟",
+            "Um abraço quentinho virtual pra te alegrar! 🤗",
+            "Você faz o mundo mais bonito só por ser você! 🐾",
+            "Que seu dia seja tão doce quanto um potinho de mel! 🍯",
+            "Nunca esqueça: você é incrível e único! 💖",
+            "Hoje é dia de acreditar nos seus sonhos! 🚀",
+            "Sua energia positiva ilumina tudo ao seu redor! ☀️",
+            "Você merece todas as coisas boas do universo! 🌈",
+            "Seu sorriso é como um raio de sol em um dia nublado! 🌞",
+            "Você é um presentinho especial no mundo! 🎁",
+            "Que seu coração esteja sempre cheio de amor e paz! 💞",
+            "Você é capaz de conquistar qualquer coisa! 💪✨",
+            "Hoje é um dia pra ser gentil consigo mesmo! 🥰",
+            "Você é como um cupcake: doce e impossível de resistir! 🧁",
+            "Que seu dia seja leve como uma pluma! 🕊️",
+            "Você é uma joia rara, brilhe sempre! 💎",
+            "O mundo é mais colorido com você aqui! 🌈",
+            "Você é um super-herói do amor e da bondade! 🦸‍♀️",
+            "Que seu dia seja cheio de risadas e momentos felizes! 😄",
+            "Você é como um arco-íris depois da chuva! 🌦️🌈",
+            "Sua bondade ilumina até os dias mais cinzentos! ☀️",
+            "Você é um tesouro que faz o mundo mais especial! 🏆",
+            "Que seu coração esteja sempre quentinho e feliz! 🔥💖",
+            "Você é uma florzinha que deixa o jardim da vida mais bonito! 🌸",
+            "Hoje é dia de espalhar amor por onde passar! 💕",
+            "Você é incrível, nunca duvide disso! 🌟",
+            "Que seu dia seja tão mágico quanto um conto de fadas! 🧚‍♀️ condemned",
+            "Você é um raio de luz em qualquer escuridão! 🌞",
+            "Seu sorriso é contagiante, continue espalhando alegria! 😊",
+            "Você é como um bichinho fofinho que aquece o coração! 🐻",
+            "Que seu dia seja cheio de pequenas felicidades! 🎉",
+            "Você é uma inspiração para todos ao seu redor! 🌟",
+            "Hoje é um dia perfeito pra ser você mesmo! 😎",
+            "Você é como um docinho: impossível não amar! 🍬",
+            "Que seu coração transborde de amor hoje! 💖",
+            "Você é uma estrela que guia quem está ao seu redor! ⭐",
+            "Hoje é dia de sonhar grande e acreditar em si! 🌠",
+            "Você é um presente que o universo deu ao mundo! 🎀",
+            "Que seu dia seja tão leve quanto uma bolha de sabão! 🫧",
+            "Você é como uma música alegre que anima a todos! 🎶",
+            "Seu brilho é único, nunca pare de brilhar! ✨",
+            "Hoje é dia de se mimar e ser feliz! 🥰",
+            "Você é uma pessoa incrível que faz a diferença! 🌍",
+            "Que seu dia seja cheio de amor e carinho! 💞",
+            "Você é como um gatinho: fofinho e encantador! 🐾",
+            "Hoje é dia de espalhar sorrisos por aí! 😄",
+            "Você é um raio de sol que aquece corações! ☀️",
+            "Que seu dia seja tão doce quanto um brigadeiro! 🍫",
+            "Você é como uma nuvem fofinha no céu azul! ☁️",
+            "Seu brilho é mais forte que mil estrelas! 🌟",
+            "Que seu dia seja doce como um marshmallow! 🍬",
+            "Você é um anjinho que espalha amor! 😇",
+            "Seu coração é um tesouro cheio de bondade! 💎",
+            "Hoje é dia de voar alto como um balão colorido! 🎈",
+            "Você é uma pintura perfeita no quadro da vida! 🎨",
+            "Que seu dia seja mágico como um conto de fadas! 🧙‍♀️",
+            "Você é um docinho que adoça qualquer momento! 🍭",
+            "Seu sorriso é a chave para um dia feliz! 🔑😊",
+            "Você é como um unicórnio: mágico e único! 🦄",
+            "Que seu coração seja um jardim de flores lindas! 🌷",
+            "Hoje é dia de brilhar como o sol no verão! ☀️",
+            "Você é um presente embrulhado com amor! 🎁",
+            "Que seu dia seja leve como uma borboleta! 🦋",
+            "Você é uma melodia que encanta a todos! 🎵",
+            "Seu carinho transforma qualquer dia em especial! 💖",
+            "Você é como um raio de lua, iluminando a noite! 🌙",
+            "Que seu dia seja cheio de momentos fofos! 🐾",
+            "Você é um tesouro que o mundo adora! 💎",
+            "Hoje é dia de espalhar purpurina e alegria! ✨",
+            "Você é como um sorvete: doce e refrescante! 🍦",
+            "Que seu coração esteja sempre aquecido! 🔥💕",
+            "Você é uma estrela cadente realizando desejos! 🌠",
+            "Hoje é dia de ser feliz sem motivo! 😄",
+            "Você é como um panda: fofinho e irresistível! 🐼",
+            "Que seu dia seja tão colorido quanto um arco-íris! 🌈",
+            "Você é um raio de esperança em qualquer momento! 🌞",
+            "Seu sorriso é como um abraço quentinho! 🤗",
+            "Você é uma joia que brilha com amor! 💎",
+            "Que seu dia seja leve como uma pena ao vento! 🕊️",
+            "Você é como um cupcake com cobertura de felicidade! 🧁",
+            "Hoje é dia de acreditar no seu potencial infinito! 🚀",
+            "Você é um presente que deixa o mundo mais doce! 🎀",
+            "Que seu dia seja tão encantador quanto você! 🥰",
+            "Você é como uma flor que desabrocha com beleza! 🌸",
+            "Seu coração é um farol de luz e amor! 🏮",
+            "Hoje é dia de espalhar carinho por aí! 💞",
+            "Você é uma magia que transforma tudo ao redor! 🪄",
+            "Que seu dia seja doce como um potinho de geleia! 🍓",
+            "Você é como um coelhinho: fofinho e adorável! 🐰",
+            "Seu brilho ilumina até os corações mais distantes! ✨",
+            "Hoje é dia de sorrir e ser você mesmo! 😊",
+            "Você é um tesouro escondido que todos adoram! 💖",
+            "Que seu dia seja tão lindo quanto uma manhã de primavera! 🌷",
+            "Você é como um passarinho cantando alegria! 🐦",
+            "Seu amor faz o mundo girar mais feliz! 🌍💕",
+            "Hoje é dia de brilhar com toda sua luz! 🌟"
+        ];
+
+        function mostrarMensagem() {
+            const mensagemElement = document.getElementById('mensagem');
+            const randomIndex = Math.floor(Math.random() * mensagens.length);
+            mensagemElement.textContent = mensagens[randomIndex];
+            mensagemElement.style.animation = 'bounce 0.3s ease';
+        }
+
+        // Adiciona uma animação temporária
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes bounce {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
