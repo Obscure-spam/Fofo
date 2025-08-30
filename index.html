@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
+            flex-direction: column;
         }
 
         .container {
@@ -69,6 +70,20 @@
         .heart:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
         .heart:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 2s; }
         .heart:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 0.5s; }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        .pix {
+            font-size: 16px;
+            color: #ff4d94;
+            font-weight: bold;
+        }
+
+        .pix span {
+            color: #333;
+        }
     </style>
 </head>
 <body onload="mostrarMensagem()">
@@ -80,6 +95,10 @@
         <div class="heart">🌸</div>
         <div class="heart">🐾</div>
     </div>
+
+    <footer>
+        <p class="pix">💳 PIX: <span>02683079036</span></p>
+    </footer>
 
     <script>
         const mensagens = [
@@ -111,7 +130,7 @@
             "Você é uma florzinha que deixa o jardim da vida mais bonito! 🌸",
             "Hoje é dia de espalhar amor por onde passar! 💕",
             "Você é incrível, nunca duvide disso! 🌟",
-            "Que seu dia seja tão mágico quanto um conto de fadas! 🧚‍♀️ condemned",
+            "Que seu dia seja tão mágico quanto um conto de fadas! 🧚‍♀️",
             "Você é um raio de luz em qualquer escuridão! 🌞",
             "Seu sorriso é contagiante, continue espalhando alegria! 😊",
             "Você é como um bichinho fofinho que aquece o coração! 🐻",
@@ -200,9 +219,6 @@
             }
         `;
         document.head.appendChild(style);
-  <footer>
-    <p class="pix">💳 PIX: <span>02683079036</span></p>
-  </footer>
     </script>
 </body>
 </html>
